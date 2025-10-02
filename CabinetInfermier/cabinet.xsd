@@ -59,10 +59,37 @@
     </simpleType>
     
     <simpleType name="Photo">
-        <restriction>
-            
+        <restriction base ="string">
+            <pattern value=".*\.(jpg|png)"/>
         </restriction>
     </simpleType>
+    
+    <complexType name="Visite">
+        <sequence>
+            <element name="acte" type="cab:Acte"/>
+        </sequence>
+        <attribute name="date" type="date"/>
+        <attribute name="intervenant" type="cab:Identifiant"/> <!-- unique -->
+    </complexType>
+    
+    
+    
+    <!-- element parent pour les  visite afin d'avoir l'unisite des intervenants  -->
+    <complexType name="Visites">
+        <sequence>
+            <element name="visite" type="cab:Visite" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    
+    <!--unicité des intervenant -->
+    <unique name="IntervenantUnique">
+    
+    
+
+    
+    
+    <complexType name="Acte">
+    </complexType>
     
     <complexType name="Patient">
     </complexType>
