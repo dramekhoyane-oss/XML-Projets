@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        xmlns:cab="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        elementFormDefault="qualified"
+>
+    
+    
+    <element name="cabinet" type ="cab:Cabinet"/>
+    
+    <!--Type Cabinet 
+        contient un nom : Nom
+                    prénom : Prénom 
+                    infirmier : Infirmier 3 ou plus 
+                    patients : Patient [0-n]
+     -->
+    <complexType name="Cabinet">
+        <sequence>
+            <element name = "nom" type="cab:NomGénérique"/>
+            <element name = "prénom" type="cab:NomGénérique"/>
+            <element name="infirmier" type="cab:Infirmier"/>
+            <element name ="patiens" type = "cab:Patient"/>
+        </sequence>
+    </complexType>
+    
+    <!-- type NomGénérique
+        un String qui commence par une majuscule
+         il sera utilisé pour nom,prénom et ville
+    -->
+    <simpleType name="NomGénérique">
+        <restriction base="string">
+            <pattern value="[A-Z][a-zA-Z]*"/>
+        </restriction>
+    </simpleType>
+    
+    <!-- type Infirmier
+        contient id : Identifiant 
+                 nom : NomGénérique
+                 prémon : NomGénérique 
+                 photo : Photo "optionnel"  
+    -->
+    <complexType name="Infirmier">
+        <sequence>
+            <element name="id" type="cab:Identifiant"/> <!--!UNIQUE-->
+            <element name="nom" type="cab:NomGénérique"/>
+            <element name="prénom" type="cab:NomGénérique"/>
+            <element name="photo" type="cab:Photo"/>
+        </sequence>
+    </complexType>
+    
+    <!--simple type Identifiant
+    un entier positif de trois chiffre unique
+    -->
+    <simpleType name="Identifiant"> <!--a regarder -->
+        <restriction base="integer">
+            <minExclusive value="100"/>
+            <maxInclusive value="999"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="Photo">
+        <restriction>
+            
+        </restriction>
+    </simpleType>
+    
+    <complexType name="Patient">
+    </complexType>
+    
+    
+    
+    
+    
+    
+</schema>

@@ -1,0 +1,113 @@
+@startuml
+
+' Définition du namespace général pour la base de données du cabinet
+package "CabinetInfirmier" {
+
+class Cabinet {
+nom : Nom
+adresse : Adresse 
+infirmiers : List<Infirmiers>
+patients : List<Patient>
+}
+
+class Adresse{
+étage : NombreEntier "optionnel"
+numéro : NombreEntier "aptionnel"
+rue : Rue 
+ville : Ville
+codePostal : CodePostal 
+
+}
+
+class Infirmier{
+id : Identifiant "attribut"
+nom : Nom
+prénom : Prénom
+photo : Photo "optionnel"
+}
+
+class Patient{
+nom : Nom
+prénom : Prénom
+sexe : Sexe 
+naissance : Naissance 
+numéro : NuméroSécu /' attention c'est le num de sécu '/
+adresse : Adresse
+visite : List<Visite>
+}
+
+class Visite{
+date : Date "attribut"
+intervenant : Identifiant "attribut"
+acte : List<Acte>
+}
+
+class Acte{
+id : Identifiant "attribut"
+intitule : String
+lettre-clé : Lettre-Clé
+coefficient : Float
+}
+
+enum Lettre-Clé{
+AMI
+AIS
+DI
+}
+
+class Nom{
+ - valeur : String {CommenceParMajuscule}
+}
+class Prénom{
+ - valeur : String {CommenceParMajuscule}
+}
+class Ville{
+ - valeur : String {CommenceParMajuscule}
+}
+class NombreEntier{
+ - valeur : int > 0
+}
+
+class CodePostal{
+ - codePostal : String {length=5}
+}
+
+class Rue {
+    - typeVoie : TypeVoie
+    - nom : String
+}
+
+enum TypeVoie {
+    Rue
+    Avenue
+    Boulevard
+    Place
+    Chemin 
+    Impasse 
+}
+
+class Photo{
+- fichier : String {extension = .jpg | .png}
+}
+class NuméroSécu{
+- numero : String {15 chiffres, commence par 1 ou 2}
+}
+
+class Identifiant {
+- id : int {positif, 3 chiffres, unique}
+}
+  
+  
+  ' Relations
+  Cabinet "1" o-- "*" Infirmier
+  Cabinet "1" o-- "*" Patient
+  Patient "*" o-- "*" Visite
+  Visite "1" o-- "*" Acte
+  Patient "1" o-- "1" Infirmier
+  Patient "1" o-- "1" Adresse
+  Infirmier "1" o-- "*" Patient
+
+
+}
+@enduml
+

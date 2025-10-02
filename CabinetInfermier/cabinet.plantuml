@@ -1,0 +1,82 @@
+@startuml
+
+class Cabinet {
+nom : NomGenerique 
+adresse : Adresse 
+infirmiers : List<Infirmiers>
+patients : List<Patient>
+}
+
+class Patient{
+nom : Nomgenerique
+prénom : NomGenerique
+sexe : Sexe 
+naissance : Naissance 
+numéro : Numéro 
+adresse : Adresse
+visite : List<Visite>
+}
+
+class Visite{
+date : Date
+intervenant : Intervenant /' ou id '/
+acte : List<Acte>
+}
+class Adresse{
+étage : NombreEntier "optionnel"
+numéro : NombreEntier
+rue : Rue 
+ville : NomGenerique
+codePostal : NumbreEntier
+
+}
+
+class Infirmier{
+id : Identifiant 
+nom : NomGenerique
+prénom : NomGenerique
+photo : Photo
+}
+class Acte{
+id : Identifiant 
+}
+class Intervenant {
+}
+class NomGenerique {
+} /'passer en classe nom prenom ville '/
+class Infirmiers{
+}
+class Identifiant{
+}
+class NombreEntier{
+}
+class Photo{
+}
+class Rue{
+}
+Nom --> Cabinet 
+Adresse --> Cabinet 
+Infirmiers  "1--n" --> Cabinet
+Patient "0--n"--> Cabinet
+
+NomGenerique --> Adresse  /'Ville'/
+NombreEntier --> Adresse  /'numéro + CodePostal'/
+Rue --> Adresse
+
+Infirmier "1--n" --> Infirmiers
+
+NomGenerique --> Patient /'nom + Prénom'/
+Sexe--> Patient
+Naissance--> Patient
+NumbreEntier --> Patient /'numéro'/
+Adresse--> Patient
+Visite "0--n"--> Patient
+
+Intervenant --> Visite
+Acte --> Visite
+
+Identifiant --> Infirmier
+NomGenerique --> Infirmier
+Photo --> Infirmier
+
+@enduml
