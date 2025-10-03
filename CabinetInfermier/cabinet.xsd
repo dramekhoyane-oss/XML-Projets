@@ -48,15 +48,30 @@
         </sequence>
     </complexType>
     
+    
     <!--simple type Identifiant
-    un entier positif de trois chiffre unique
+    un entier positif de trois chiffre unique (001, 999, 125...)
+    utilisation de (\d -> digit ou chiffre)
     -->
-    <simpleType name="Identifiant"> <!--a regarder -->
+    <simpleType name="Identifiant"> 
         <restriction base="integer">
-            <minExclusive value="100"/>
-            <maxInclusive value="999"/>
+            <pattern value="\d{3}"/>
         </restriction>
     </simpleType>
+    
+    <element name="Identifiants">
+        <complexType>
+            <sequence>
+            <element name="id" type="cab:Identifiant"/>
+            </sequence>
+        </complexType>
+        
+        <unique name="uniqueIdentifiant">
+            <selector xpath="id"/>
+            <!-- verrifie la valeur textuelle de id( qui doivent etre tous différents) -->
+            <field xpath="."/>
+        </unique>
+    </element>
     
     <simpleType name="Photo">
         <restriction base ="string">
@@ -74,18 +89,38 @@
     
     
     
-    <!-- element parent pour les  visite afin d'avoir l'unisite des intervenants  -->
-    <complexType name="Visites">
+    <!-- element parent (qui contient plusieur visites) pour les  visite afin d'avoir l'unisite des intervenants  -->
+    <element name="Visites">
+        <complexType>
         <sequence>
             <element name="visite" type="cab:Visite" maxOccurs="unbounded"/>
         </sequence>
+        </complexType>
+    
+        <!--unicité des intervenant -->
+        <unique name="IntervenantUnique">
+                <selector xpath="visite"/>
+                <field xpath=" @intervenant"/>
+    
+        </unique>
+    </element>
+    
+    <complexType name="Rue">
+        <attribute name="typeVoie" type="cab:TypeVoie"/>
+        <attribute name="nom" type="string"/>
     </complexType>
     
-    <!--unicité des intervenant -->
-    <unique name="IntervenantUnique">
-    
-    
-
+    <simpleType name="TypeVoie">
+        <restriction base="string">
+            <pattern value="Rue"/>
+            <pattern value="Avenue"/>
+            <pattern value="Boulevard"/>
+            <pattern value="Place"/>
+            <pattern value="Chemin"/>
+            <pattern value="Impasse"/>
+        </restriction>
+        
+    </simpleType>
     
     
     <complexType name="Acte">
@@ -93,10 +128,6 @@
     
     <complexType name="Patient">
     </complexType>
-    
-    
-    
-    
     
     
 </schema>
