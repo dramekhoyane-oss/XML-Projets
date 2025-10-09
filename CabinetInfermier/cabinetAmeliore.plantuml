@@ -106,6 +106,24 @@ class Identifiant {
   Patient "1" o-- "1" Infirmier
   Patient "1" o-- "1" Adresse
   Infirmier "1" o-- "*" Patient
+  ' ajouter les cardinalités 
+'CodePostal *-- NombreEntier
+
+ 'Adresse "1" o-- "1" CodePostal 
+CodePostal *-- NombreEntier
+Adresse *-- NombreEntier
+Adresse "1" o-- "1" CodePostal
+
+'Acte  *-- Lettre-Clé ne fonctionne pas ,pourrriez-vous proposer une solution pour relation enum Lettre-Clé
+
+
+
+
+
+
+
+ 
+
 
 
 }
