@@ -19,11 +19,19 @@ codePostal : CodePostal
 
 }
 
+class Infirmiers {
+
+}
+
 class Infirmier{
 id : Identifiant "attribut"
 nom : Nom
 prénom : Prénom
 photo : Photo "optionnel"
+}
+
+class Patients{
+
 }
 
 class Patient{
@@ -99,13 +107,15 @@ class Identifiant {
   
   
   ' Relations
-  Cabinet "1" o-- "*" Infirmier
-  Cabinet "1" o-- "*" Patient
-  Patient "*" o-- "*" Visite
+  Cabinet  *--  Infirmiers
+  Cabinet  *--  Patients
+  Patient "*" --- "*" Visite
   Visite "1" o-- "*" Acte
   Patient "1" o-- "1" Infirmier
   Patient "1" o-- "1" Adresse
   Infirmier "1" o-- "*" Patient
+  Infirmiers *--- "*" Infirmier
+  Patirnts *--- "*" Patient 
   ' ajouter les cardinalités 
 'CodePostal *-- NombreEntier
 

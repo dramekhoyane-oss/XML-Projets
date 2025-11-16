@@ -6,7 +6,11 @@ adresse : Adresse
 infirmiers : List<Infirmiers>
 patients : List<Patient>
 }
-
+/' les classes conteneurs de patien et infirmier'/
+class Patients{
+}
+class Infirmiers{
+}
 class Patient{
 nom : Nomgenerique
 prénom : NomGenerique
@@ -17,11 +21,25 @@ adresse : Adresse
 visite : List<Visite>
 }
 
+class Infirmier{
+id : Identifiant 
+nom : NomGenerique
+prénom : NomGenerique
+photo : Photo
+}
+
 class Visite{
 date : Date
 intervenant : Intervenant /' ou id '/
 acte : List<Acte>
 }
+
+class Acte{
+id : Identifiant 
+}
+class Intervenant {
+}
+
 class Adresse{
 étage : NombreEntier "optionnel"
 numéro : NombreEntier
@@ -30,53 +48,77 @@ ville : NomGenerique
 codePostal : NumbreEntier
 
 }
-
-class Infirmier{
-id : Identifiant 
-nom : NomGenerique
-prénom : NomGenerique
-photo : Photo
-}
-class Acte{
-id : Identifiant 
-}
-class Intervenant {
-}
 class NomGenerique {
 } /'passer en classe nom prenom ville '/
-class Infirmiers{
-}
+
+
+
 class Identifiant{
 }
 class NombreEntier{
 }
+
+class Sexe{
+}
+
 class Photo{
 }
 class Rue{
 }
-Nom --> Cabinet 
-Adresse --> Cabinet 
-Infirmiers  "1--n" --> Cabinet
-Patient "0--n"--> Cabinet
 
+
+/'les liaisons '/
+
+/'la Composition (*--): La "partie" ne peut pas exister sans le "tout"
+exemple: Cabinet -> la "Tout" , Infirmiers -> la "Partie"
+si le cabinet ferme, plus la classe Infirmiers(plus de raison d'etre)
+'/
+
+/'L'Agrégation (o--): La "partie" peut exister indépendamment du "tout"
+'/
+
+/' A --> B : A -> (A l'element simple , B -> l'element qui utilise A) lien logique simple qui peut signifier "est affecteé à"
+ '/
+
+
+Cabinet *-- Infirmiers
+Cabinet *-- Patients
+Cabinet *-- "1" Adresse 
+Infirmiers *-- "1..*" Infirmier
+Patients *-- "1..*" Patient
+Patient *-- "0..*" Visite /'une visite ne peut pas exister sans patient '/
+Patient *-- "1" Adresse
+Patient "0..*" --> "1" Infirmier /' 1 Infirmier a 0 ou +sieur Patient '/
+Visite *-- "1..*"  Acte 
+
+NomGenerique --> Cabinet 
+NomGenerique --> Infirmier
+NomGenerique --> Patient /'nom + Prénom'/
 NomGenerique --> Adresse  /'Ville'/
 NombreEntier --> Adresse  /'numéro + CodePostal'/
-Rue --> Adresse
-
-Infirmier "1--n" --> Infirmiers
-
-NomGenerique --> Patient /'nom + Prénom'/
+NumbreEntier --> Patient /'numéro'/
 Sexe--> Patient
 Naissance--> Patient
-NumbreEntier --> Patient /'numéro'/
 Adresse--> Patient
-Visite "0--n"--> Patient
-
-Intervenant --> Visite
-Acte --> Visite
-
 Identifiant --> Infirmier
-NomGenerique --> Infirmier
 Photo --> Infirmier
+Intervenant --> Visite
+Rue --> Adresse
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @enduml
