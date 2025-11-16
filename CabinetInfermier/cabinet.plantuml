@@ -97,6 +97,7 @@ NomGenerique --> Patient /'nom + Prénom'/
 NomGenerique --> Adresse  /'Ville'/
 NombreEntier --> Adresse  /'numéro + CodePostal'/
 NumbreEntier --> Patient /'numéro'/
+
 Sexe--> Patient
 Naissance--> Patient
 Adresse--> Patient
