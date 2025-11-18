@@ -18,8 +18,23 @@
         <sequence>
             <element name = "nom" type="cab:NomGénérique"/>
             <element name = "prénom" type="cab:NomGénérique"/>
-            <element name="infirmier" type="cab:Infirmier"/>
-            <element name ="patiens" type = "cab:Patient"/>
+            <element name="infirmiers" type="cab:Infirmiers"/>
+            <element name ="patiens" type = "cab:Patients"/>
+        </sequence>
+    </complexType>
+    
+    <!--  -->
+    
+    <complexType name="Infirmiers">
+        <sequence>
+            <element name="infirmier" type="cab:Infirmier" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    
+    <!--  -->
+    <complexType name="Patients">
+        <sequence>
+            <element name="patient" type="cab:Patient" minOccurs="0" maxOccurs="unbounded" />
         </sequence>
     </complexType>
     
@@ -49,6 +64,22 @@
     </complexType>
     
     
+    <!-- -->
+    <complexType name="Patient">
+        <sequence>
+            <element name="nom" type="cab:NomGénérique"/>
+            <element name="prenom" type="cab:NomGénérique"/>
+            <element name="sexe" type="cab:Sexe"/>
+            <element name="dateNaissance" type="date"/>
+            <element name="numero" type="cab:numSecu"/>
+            <element name="adresse" type="cab:Adresse"/>
+            <element name="visite" type="cab:Visite" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    
+    
+    
+    
     <!--simple type Identifiant
     un entier positif de trois chiffre unique (001, 999, 125...)
     utilisation de (\d -> digit ou chiffre)
@@ -58,6 +89,8 @@
             <pattern value="\d{3}"/>
         </restriction>
     </simpleType>
+    
+    
     
     <element name="Identifiants">
         <complexType>
@@ -110,6 +143,7 @@
         <attribute name="nom" type="string"/>
     </complexType>
     
+    
     <simpleType name="TypeVoie">
         <restriction base="string">
             <pattern value="Rue"/>
@@ -122,12 +156,65 @@
         
     </simpleType>
     
+    <!-- -->
+    <simpleType name="Sexe">
+        <restriction base="string">
+        <pattern value="M"/>
+        <pattern value="F"/>
+        </restriction>
+        
+    </simpleType>
+    
+    <!-- numSecu: composé de 13 chiffres, suivi d’une clé de contrôle
+            de 2 chiffres  comprise entre 01 et 97 
+            0[1-9] -> 01 à 09
+            [1-8][0-9]  -> 10 à 89 
+            9[0-7]   -> 90 à 97
+ 
+ -->
+    <simpleType name="numSecu">
+        <restriction base="string">
+            <pattern value="\d{13}(0[1-9]|[1-8][0-9]|9[0-7])"/>
+        </restriction>
+    </simpleType>
+    
     
     <complexType name="Acte">
+        <attribute name="id" type="cab:Identifiant" />
+        <attribute name="intitule" type="string"/>
+        <attribute name="lettreCle" type="cab:LettreCle"/>
     </complexType>
     
-    <complexType name="Patient">
+    <!-- -->
+    <complexType name="Adresse">
+        <sequence>
+            <element name="numero" type="cab:NombreEntier"/>
+            <element name="rue" type="cab:Rue"/>
+            <element name="ville" type="cab:NomGénérique"/>
+        </sequence>
+        <attribute name="etage" type="cab:NombreEntier"/>
+        <attribute name="codePostal" type="cab:NombreEntier"/>
     </complexType>
+    
+    <!-- NombreEntier: nombre entier >=0 -->
+    <simpleType name="NombreEntier">
+        <restriction base="integer">
+            <minInclusive value="0"/>
+        </restriction>
+    </simpleType>
+    
+    <!-- LettreCle: ensemble de 3 lettres parmi les suivantes:
+            AMI pour (Acte Médico-Infirmier)
+            AIS (Acte de Soins Infirmier)
+            DI (Démarche de soins Infirmiers)-->
+    <simpleType name="LettreCle">
+        <restriction base="string">
+            <pattern value="AMI"/>
+            <pattern value="AIS"/>
+            <pattern value="DI"/>
+        </restriction>
+        
+    </simpleType>
     
     
 </schema>

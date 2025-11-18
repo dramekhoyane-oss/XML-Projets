@@ -21,7 +21,7 @@ class Patient{
 nom : Nomgenerique
 prenom : NomGenerique
 sexe : Sexe 
-dateNaissance : Date
+dateNaissance : date
 numero : numSecu
 adresse : Adresse
 visite : List<Visite>
@@ -36,7 +36,7 @@ photo : Photo
 
 class Visite{
 date : Date
-intervenant : Identifiant /' ou id '/
+intervenant : Identifiant /' id de l'infirmier intervenu'/
 acte : List<Acte>
 }
 
@@ -59,6 +59,7 @@ ville: NomGenerique
 
 class Rue{
 nom: NomGenerique
+typeVoie: TypeVoie
 }
 
 /' NomGenerique: passer en classe : nom, prenom, ville '/
@@ -85,6 +86,10 @@ class numSecu{
 
 /'extension .jpg | .png '/
 class Photo{
+}
+
+/'TypeVoie: enumération '/
+class TypeVoie{
 }
 
 
