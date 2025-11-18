@@ -6,17 +6,23 @@ adresse : Adresse
 infirmiers : List<Infirmiers>
 patients : List<Patient>
 }
+
 /' les classes conteneurs de patien et infirmier'/
 class Patients{
+patient : List<Patient>
 }
+
 class Infirmiers{
+Infirmier : List<Infirmier>
 }
+
+
 class Patient{
 nom : Nomgenerique
-prénom : NomGenerique
+prenom : NomGenerique
 sexe : Sexe 
-naissance : Naissance 
-numéro : Numéro 
+dateNaissance : Date
+numero : numSecu
 adresse : Adresse
 visite : List<Visite>
 }
@@ -30,44 +36,61 @@ photo : Photo
 
 class Visite{
 date : Date
-intervenant : Intervenant /' ou id '/
+intervenant : Identifiant /' ou id '/
 acte : List<Acte>
 }
 
 class Acte{
 id : Identifiant 
+intitule: String
+lettreCle: LettreCle
+coefficient: double
+
 }
-class Intervenant {
-}
+
 
 class Adresse{
-étage : NombreEntier "optionnel"
-numéro : NombreEntier
-rue : Rue 
-ville : NomGenerique
-codePostal : NumbreEntier
-
+etage: NombreEntier "optionnel"
+numero: NombreEntier
+rue: Rue 
+codePostal: NumbreEntier
+ville: NomGenerique
 }
+
+class Rue{
+nom: NomGenerique
+}
+
+/' NomGenerique: passer en classe : nom, prenom, ville '/
 class NomGenerique {
-} /'passer en classe nom prenom ville '/
+} 
 
 
-
+/' Identifiant: 3 chiffres, ex: 001-999 '/
 class Identifiant{
 }
+
+/' NombreEntier: entier >=0 '/
 class NombreEntier{
 }
 
+/' Sexe: M ou F '/
 class Sexe{
 }
 
+/'numSecu: composé de 13 chiffres, suivi d’une clé de contrôle
+ de 2 chiffres  comprise entre 01 et 97 '/
+class numSecu{
+}
+
+/'extension .jpg | .png '/
 class Photo{
 }
-class Rue{
-}
 
 
-/'les liaisons '/
+
+
+/'les relations '/
 
 /'la Composition (*--): La "partie" ne peut pas exister sans le "tout"
 exemple: Cabinet -> la "Tout" , Infirmiers -> la "Partie"
@@ -84,38 +107,27 @@ si le cabinet ferme, plus la classe Infirmiers(plus de raison d'etre)
 Cabinet *-- Infirmiers
 Cabinet *-- Patients
 Cabinet *-- "1" Adresse 
+
 Infirmiers *-- "1..*" Infirmier
+
 Patients *-- "1..*" Patient
 Patient *-- "0..*" Visite /'une visite ne peut pas exister sans patient '/
-Patient *-- "1" Adresse
 Patient "0..*" --> "1" Infirmier /' 1 Infirmier a 0 ou +sieur Patient '/
+
 Visite *-- "1..*"  Acte 
 
 NomGenerique --> Cabinet 
 NomGenerique --> Infirmier
 NomGenerique --> Patient /'nom + Prénom'/
 NomGenerique --> Adresse  /'Ville'/
-NombreEntier --> Adresse  /'numéro + CodePostal'/
-NumbreEntier --> Patient /'numéro'/
+NombreEntier --> Adresse  /'CodePostal'/
+numSecu --> Patient 
 
 Sexe--> Patient
-Naissance--> Patient
-Adresse--> Patient
+Adresse "1" --> Patient
 Identifiant --> Infirmier
 Photo --> Infirmier
-Intervenant --> Visite
 Rue --> Adresse
-
-
-
-
-
-
-
-
-
-
-
 
 
 
