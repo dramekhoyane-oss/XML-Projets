@@ -5,13 +5,12 @@
         elementFormDefault="qualified"
 >
     
-    
     <element name="cabinet" type ="cab:Cabinet"/>
     
     <!--Type Cabinet 
         contient un nom : Nom
                     prénom : Prénom 
-                    infirmier : Infirmier 3 ou plus 
+                    infirmiers : liste Infirmier 
                     patients : Patient [0-n]
      -->
     <complexType name="Cabinet">
@@ -137,6 +136,18 @@
     
         </unique>
     </element>
+
+
+    <!-- -->
+    <complexType name="Adresse">
+        <sequence>
+            <element name="numero" type="cab:NombreEntier"/>
+            <element name="rue" type="cab:Rue"/>
+            <element name="ville" type="cab:NomGénérique"/>
+        </sequence>
+        <attribute name="etage" type="cab:NombreEntier"/>
+        <attribute name="codePostal" type="cab:NombreEntier"/>
+    </complexType>
     
     <complexType name="Rue">
         <attribute name="typeVoie" type="cab:TypeVoie"/>
@@ -185,16 +196,7 @@
         <attribute name="lettreCle" type="cab:LettreCle"/>
     </complexType>
     
-    <!-- -->
-    <complexType name="Adresse">
-        <sequence>
-            <element name="numero" type="cab:NombreEntier"/>
-            <element name="rue" type="cab:Rue"/>
-            <element name="ville" type="cab:NomGénérique"/>
-        </sequence>
-        <attribute name="etage" type="cab:NombreEntier"/>
-        <attribute name="codePostal" type="cab:NombreEntier"/>
-    </complexType>
+    
     
     <!-- NombreEntier: nombre entier >=0 -->
     <simpleType name="NombreEntier">

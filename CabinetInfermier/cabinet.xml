@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cab:cabinet xmlns:cab = "http://www.univ-grenoble-alpes.fr/l3miage/medical"
+             xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation = "http://www.univ-grenoble-alpes.fr/l3miage/medical cabinet.xsd">
+
+    <cab:nom>LeCabinet</cab:nom>
+    <cab:prénom>Pierre</cab:prénom>
+    <cab:infirmiers>
+        <cab:infirmier>
+            <cab:id>999</cab:id>
+            <cab:nom>Blanc</cab:nom>
+            <cab:prénom>Salou</cab:prénom>
+            <cab:photo>photo.png</cab:photo>
+        </cab:infirmier>
+
+        <cab:infirmier>
+            <cab:id>194</cab:id>
+            <cab:nom>Salla</cab:nom>
+            <cab:prénom>Yacine</cab:prénom>
+            <cab:photo>photo.jpg</cab:photo>
+        </cab:infirmier>
+    </cab:infirmiers>
+    <cab:patiens>
+        <cab:patient>
+            <cab:nom>Doria</cab:nom>
+            <cab:prenom>Paul</cab:prenom>
+            <cab:sexe>M</cab:sexe>
+            <cab:dateNaissance>2000-05-01</cab:dateNaissance>
+            <cab:numero>387340082366496</cab:numero>
+            <cab:adresse etage="3" codePostal="22100">
+                <cab:numero>12</cab:numero>
+                <cab:rue typeVoie="Avenue" nom="JeanLoue"/>
+                <cab:ville>SaintLouis</cab:ville>
+            </cab:adresse>
+            <cab:visite date="2024-11-22" intervenant="194" >
+                <cab:acte id="103" intitule="DémarcheDeSoinsInfirmiers" lettreCle="DI"/>
+            </cab:visite >
+        </cab:patient>
+
+
+        <cab:patient>
+            <cab:nom>Poiro</cab:nom>
+            <cab:prenom>Salma</cab:prenom>
+            <cab:sexe>F</cab:sexe>
+            <cab:dateNaissance>2002-09-10</cab:dateNaissance>
+            <cab:numero>387340082366478</cab:numero>
+            <cab:adresse etage="2" codePostal="33100">
+                <cab:numero>12</cab:numero>
+                <cab:rue typeVoie="Rue" nom="Fievre"/>
+                <cab:ville>Lile</cab:ville>
+            </cab:adresse>
+            <cab:visite date="2025-05-20" intervenant="999" >
+                <cab:acte id="005" intitule="ActeMédicoInfirmier" lettreCle="AMI"/>
+            </cab:visite >
+        </cab:patient>
+    </cab:patiens>
+</cab:cabinet>
+
+    
