@@ -43,7 +43,7 @@
     -->
     <simpleType name="NomGénérique">
         <restriction base="string">
-            <pattern value="[A-Z][a-zA-Z]*"/>
+            <pattern value="[A-ZÉÈÊËÀÂÎÏÔÙÜÇ][a-zA-ZéèêëàâîïôùüçÉÈÊËÀÂÎÏÔÙÜÇ]*"/>   <!-- utilisation IA pour avoir toute les lettres necessaire(unicode y compris accentuée)  -->
         </restriction>
     </simpleType>
     

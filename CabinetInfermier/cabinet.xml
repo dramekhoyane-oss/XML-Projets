@@ -29,11 +29,11 @@
             <cab:numero>387340082366496</cab:numero>
             <cab:adresse etage="3" codePostal="22100">
                 <cab:numero>12</cab:numero>
-                <cab:rue typeVoie="Avenue" nom="JeanLoue"/>
+                <cab:rue typeVoie="Avenue" nom="Jean Loue"/>
                 <cab:ville>SaintLouis</cab:ville>
             </cab:adresse>
             <cab:visite date="2024-11-22" intervenant="194" >
-                <cab:acte id="103" intitule="DémarcheDeSoinsInfirmiers" lettreCle="DI"/>
+                <cab:acte id="103" intitule="Prelevement sanguin" lettreCle="AMI"/>
             </cab:visite >
         </cab:patient>
 
@@ -50,7 +50,58 @@
                 <cab:ville>Lile</cab:ville>
             </cab:adresse>
             <cab:visite date="2025-05-20" intervenant="999" >
-                <cab:acte id="005" intitule="ActeMédicoInfirmier" lettreCle="AMI"/>
+                <cab:acte id="005" intitule="bactériologiques " lettreCle="AMI"/>
+            </cab:visite >
+        </cab:patient>
+
+
+        <cab:patient>
+            <cab:nom>Orouge</cab:nom>
+            <cab:prenom>Elvire</cab:prenom>
+            <cab:sexe>F</cab:sexe>
+            <cab:dateNaissance>1982-03-08</cab:dateNaissance>
+            <cab:numero>387340082366452</cab:numero>  <!-- 52e naissance? -->
+            <cab:adresse codePostal="38700">
+                <cab:numero>12</cab:numero>
+                <cab:rue typeVoie="Rue" nom=" Rond-Point de la Croix de Vie"/>
+                <cab:ville>Tronche</cab:ville>
+            </cab:adresse>
+            <cab:visite date="2015-12-08">
+                <cab:acte id="106" intitule="Pansement de brûlure étendue" lettreCle="AMI"/>
+            </cab:visite >
+        </cab:patient>
+
+
+        <cab:patient>
+            <cab:nom>Pien</cab:nom>
+            <cab:prenom>Oscare</cab:prenom>
+            <cab:sexe>M</cab:sexe>
+            <cab:dateNaissance>1975-03-25</cab:dateNaissance>
+            <cab:numero>387340082366465</cab:numero>   <!-- 692e naissance? -->
+            <cab:adresse codePostal="38000"> 
+                <cab:numero>12</cab:numero>
+                <cab:rue typeVoie="Rue" nom=" Casimir Brenier"/>
+                <cab:ville>Grenoble</cab:ville>
+            </cab:adresse>
+            <cab:visite date="2015-12-08"  >
+                <cab:acte intitule="Prélèvement par ponction veineuse directe, injection intraveineuse directe isolée d’anthalgiques" lettreCle="AMI"/>
+            </cab:visite >
+        </cab:patient>
+
+
+        <cab:patient>
+            <cab:nom>Kapoëtla</cab:nom>
+            <cab:prenom>Xavier</cab:prenom>
+            <cab:sexe>M</cab:sexe>
+            <cab:dateNaissance>2011-08-02</cab:dateNaissance>
+            <cab:numero>387340082366435</cab:numero>   <!-- 35e naissance? -->
+            <cab:adresse codePostal="38042">
+                <cab:numero>25</cab:numero>
+                <cab:rue typeVoie="Rue" nom="rue des Martyrs "/>
+                <cab:ville>Grenoble</cab:ville>
+            </cab:adresse>
+            <cab:visite date="2015-12-08"  >
+                <cab:acte intitule="injection de plusieurs allergènes" lettreCle="AMI"/>
             </cab:visite >
         </cab:patient>
     </cab:patiens>
