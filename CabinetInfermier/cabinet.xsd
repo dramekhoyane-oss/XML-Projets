@@ -18,7 +18,7 @@
             <element name = "nom" type="cab:NomGénérique"/>
             <element name = "prénom" type="cab:NomGénérique"/>
             <element name="infirmiers" type="cab:Infirmiers"/>
-            <element name ="patiens" type = "cab:Patients"/>
+            <element name ="patients" type = "cab:Patients"/>
         </sequence>
     </complexType>
     

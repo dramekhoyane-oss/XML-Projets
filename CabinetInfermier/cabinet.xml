@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type = "text/xsl/ href = "cabinet.xsl"?>
 <cab:cabinet xmlns:cab = "http://www.univ-grenoble-alpes.fr/l3miage/medical"
              xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation = "http://www.univ-grenoble-alpes.fr/l3miage/medical cabinet.xsd">
@@ -20,7 +21,7 @@
             <cab:photo>photo.jpg</cab:photo>
         </cab:infirmier>
     </cab:infirmiers>
-    <cab:patiens>
+    <cab:patients>
         <cab:patient>
             <cab:nom>Doria</cab:nom>
             <cab:prenom>Paul</cab:prenom>
@@ -104,7 +105,7 @@
                 <cab:acte intitule="injection de plusieurs allergènes" lettreCle="AMI"/>
             </cab:visite >
         </cab:patient>
-    </cab:patiens>
+    </cab:patients>
 </cab:cabinet>
 
     
