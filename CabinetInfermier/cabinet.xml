@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type = "text/xsl/ href = "cabinet.xsl"?>
+<?xml-stylesheet type="text/xsl" href="cabinet.xslt"?>
 <cab:cabinet xmlns:cab = "http://www.univ-grenoble-alpes.fr/l3miage/medical"
              xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation = "http://www.univ-grenoble-alpes.fr/l3miage/medical cabinet.xsd">
 
     <cab:nom>LeCabinet</cab:nom>
-    <cab:prénom>Pierre</cab:prénom>
     <cab:infirmiers>
         <cab:infirmier>
             <cab:id>999</cab:id>
@@ -15,7 +14,7 @@
         </cab:infirmier>
 
         <cab:infirmier>
-            <cab:id>194</cab:id>
+            <cab:id>111</cab:id>
             <cab:nom>Salla</cab:nom>
             <cab:prénom>Yacine</cab:prénom>
             <cab:photo>photo.jpg</cab:photo>
@@ -24,31 +23,37 @@
     <cab:patients>
         <cab:patient>
             <cab:nom>Doria</cab:nom>
-            <cab:prenom>Paul</cab:prenom>
+            <cab:prénom>Paul</cab:prénom>
             <cab:sexe>M</cab:sexe>
             <cab:dateNaissance>2000-05-01</cab:dateNaissance>
             <cab:numero>387340082366496</cab:numero>
-            <cab:adresse etage="3" codePostal="22100">
+            <cab:adresse >
+                <cab:etage>3</cab:etage>
                 <cab:numero>12</cab:numero>
-                <cab:rue typeVoie="Avenue" nom="Jean Loue"/>
+                <cab:rue> Avenue Jean Loue</cab:rue>
                 <cab:ville>SaintLouis</cab:ville>
+                <cab:codePostal>22100</cab:codePostal>
+                
             </cab:adresse>
             <cab:visite date="2024-11-22" intervenant="194" >
-                <cab:acte id="103" intitule="Prelevement sanguin" lettreCle="AMI"/>
+                <cab:acte id="109" intitule="Prelevement sanguin" lettreCle="AMI"/>
             </cab:visite >
         </cab:patient>
 
 
         <cab:patient>
             <cab:nom>Poiro</cab:nom>
-            <cab:prenom>Salma</cab:prenom>
+            <cab:prénom>Salma</cab:prénom>
             <cab:sexe>F</cab:sexe>
             <cab:dateNaissance>2002-09-10</cab:dateNaissance>
             <cab:numero>387340082366478</cab:numero>
-            <cab:adresse etage="2" codePostal="33100">
+            <cab:adresse>
+                <cab:etage>2</cab:etage>
                 <cab:numero>12</cab:numero>
-                <cab:rue typeVoie="Rue" nom="Fievre"/>
-                <cab:ville>Lile</cab:ville>
+                <cab:rue> Rue Fievre</cab:rue>
+                <cab:ville>Lille</cab:ville>
+                <cab:codePostal>33100</cab:codePostal>
+                
             </cab:adresse>
             <cab:visite date="2025-05-20" intervenant="999" >
                 <cab:acte id="005" intitule="bactériologiques " lettreCle="AMI"/>
@@ -58,14 +63,16 @@
 
         <cab:patient>
             <cab:nom>Orouge</cab:nom>
-            <cab:prenom>Elvire</cab:prenom>
+            <cab:prénom>Elvire</cab:prénom>
             <cab:sexe>F</cab:sexe>
             <cab:dateNaissance>1982-03-08</cab:dateNaissance>
             <cab:numero>387340082366452</cab:numero>  <!-- 52e naissance? -->
-            <cab:adresse codePostal="38700">
+            <cab:adresse >
                 <cab:numero>12</cab:numero>
-                <cab:rue typeVoie="Rue" nom=" Rond-Point de la Croix de Vie"/>
+                <cab:rue> Rue Rond-Point de la Croix de Vie</cab:rue>
                 <cab:ville>Tronche</cab:ville>
+                <cab:codePostal>38700</cab:codePostal>
+                
             </cab:adresse>
             <cab:visite date="2015-12-08">
                 <cab:acte id="106" intitule="Pansement de brûlure étendue" lettreCle="AMI"/>
@@ -75,14 +82,16 @@
 
         <cab:patient>
             <cab:nom>Pien</cab:nom>
-            <cab:prenom>Oscare</cab:prenom>
+            <cab:prénom>Oscare</cab:prénom>
             <cab:sexe>M</cab:sexe>
             <cab:dateNaissance>1975-03-25</cab:dateNaissance>
             <cab:numero>387340082366465</cab:numero>   <!-- 692e naissance? -->
-            <cab:adresse codePostal="38000"> 
+            <cab:adresse>
                 <cab:numero>12</cab:numero>
-                <cab:rue typeVoie="Rue" nom=" Casimir Brenier"/>
+                <cab:rue> Rue Casimir Brenier</cab:rue>
                 <cab:ville>Grenoble</cab:ville>
+                <cab:codePostal>38000</cab:codePostal>
+                
             </cab:adresse>
             <cab:visite date="2015-12-08"  >
                 <cab:acte intitule="Prélèvement par ponction veineuse directe, injection intraveineuse directe isolée d’anthalgiques" lettreCle="AMI"/>
@@ -92,14 +101,16 @@
 
         <cab:patient>
             <cab:nom>Kapoëtla</cab:nom>
-            <cab:prenom>Xavier</cab:prenom>
+            <cab:prénom>Xavier</cab:prénom>
             <cab:sexe>M</cab:sexe>
             <cab:dateNaissance>2011-08-02</cab:dateNaissance>
             <cab:numero>387340082366435</cab:numero>   <!-- 35e naissance? -->
-            <cab:adresse codePostal="38042">
+            <cab:adresse>
                 <cab:numero>25</cab:numero>
-                <cab:rue typeVoie="Rue" nom="rue des Martyrs "/>
+                <cab:rue> Rue Martyrs "</cab:rue>
                 <cab:ville>Grenoble</cab:ville>
+                <cab:codePostal>38042</cab:codePostal>
+                
             </cab:adresse>
             <cab:visite date="2015-12-08"  >
                 <cab:acte intitule="injection de plusieurs allergènes" lettreCle="AMI"/>
